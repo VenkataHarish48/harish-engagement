@@ -3,132 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sowmya & Harish | Engagement Ceremony</title>
+    <title>Sowmya & Harish | Royal Engagement</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root { 
-            --navy: #002366; 
-            --rose-gold: #b76e79;
+            --navy: #001a4d; 
             --gold: #c5a059;
-            --cream-bg: #fdfaf5; 
-            --text-dark: #2c2c2c;
-            --border-light: #e0d8c8;
+            --royal-blue: #002366;
+            --cream-white: #fdfaf5; 
+            --ice-blue: #f0f5ff;
         }
 
         body, html { 
             margin: 0; padding: 0; overflow-x: hidden; 
             font-family: 'Cormorant Garamond', serif; 
-            background-color: var(--cream-bg); 
-            color: var(--text-dark);
+            background-color: var(--navy); 
+            color: var(--cream-white);
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 { font-weight: 300; margin: 0; color: var(--navy); text-align: center; }
-        .sans { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 5px; font-size: 0.6rem; color: var(--rose-gold); font-weight: 400; }
-        .serif-main { font-size: 2.2rem; letter-spacing: 1px; color: var(--navy); }
-        .italic-detail { font-style: italic; font-size: 1.1rem; color: #555; line-height: 1.8; }
-        .prof-serif-title { font-family: 'Cormorant Garamond', serif; color: var(--rose-gold); font-size: 3.2rem; font-weight: 400; letter-spacing: 1px; }
-        .venue-name-prof { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.4rem; color: var(--navy); margin: 10px 0; font-weight: 400; }
-        .location-small { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 2px; color: #888; text-transform: uppercase; text-align: center; }
+        h1, h2, h3 { font-weight: 300; margin: 0; text-align: center; }
+        .sans { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 5px; font-size: 0.6rem; color: var(--gold); }
+        .serif-title { font-family: 'Cormorant Garamond', serif; font-size: 3.2rem; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; }
+        .venue-stylish { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.2rem; color: var(--gold); }
+        .italic-detail { font-style: italic; font-size: 1.1rem; color: #ccc; line-height: 1.6; }
 
-        /* --- STAGE 1: ENVELOPE --- */
+        /* --- ROYAL BORDER SYSTEM --- */
+        .royal-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .royal-section::before, .royal-section::after { content: ""; position: absolute; width: 30px; height: 30px; z-index: 10; }
+        .royal-section::before { top: 25px; left: 25px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+        .royal-section::after { bottom: 25px; right: 25px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+        /* --- LANDING STAGE --- */
         #overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, #001a4d, #000a1a);
+            background: radial-gradient(circle, #001f4d, #000);
             z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
         }
-
         .overlay-slide-out { transform: translateY(-100%); }
 
         .envelope {
-            width: 340px; height: 220px; background: #fffcf7; border-radius: 2px;
-            position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            width: 340px; height: 220px; background: var(--ice-blue); border: 1px solid var(--gold);
+            position: relative; box-shadow: 0 40px 80px rgba(0,0,0,0.8);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            border: 1px solid var(--rose-gold);
         }
 
         .wax-seal {
-            width: 75px; height: 75px; background: var(--rose-gold); border-radius: 50%;
+            width: 75px; height: 75px; background: var(--gold); border-radius: 50%;
             position: absolute; bottom: -37px; cursor: pointer;
             display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); border: 2px solid #a05a64;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4); border: 2px solid #8c6d2d;
             animation: sealPulse 2s infinite ease-in-out;
         }
-
         @keyframes sealPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        .seal-burst { animation: burstOut 0.8s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275) !important; }
-        @keyframes burstOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+        .wax-seal span { color: white; font-family: 'Montserrat'; font-weight: 600; font-size: 0.8rem; }
+        .seal-burst { animation: burstOut 0.8s forwards !important; }
+        @keyframes burstOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(3.5); opacity: 0; } }
 
-        /* --- MAIN CONTENT & BORDERS --- */
-        .main-content { display: none; text-align: center; }
-        .section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 20px; box-sizing: border-box; position: relative; }
-
-        .gold-border-card {
-            border: 1px solid #f2eee6; padding: 60px 40px; position: relative;
-            max-width: 550px; background: #fffcf7; box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+        /* --- THE FIXED TEXT REVEAL ANIMATION --- */
+        .reveal-item { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out; 
         }
-        /* RESTORED BORDER LINES (CORNERS) */
-        .gold-border-card::before, .gold-border-card::after { content: ""; position: absolute; width: 25px; height: 25px; }
-        .gold-border-card::before { top: 12px; left: 12px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-        .gold-border-card::after { bottom: 12px; right: 12px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
 
-        /* --- CENTERED COUPLE LAYOUT --- */
+        /* The class added by JS to trigger the sequence */
+        .show-now .reveal-item { 
+            opacity: 1 !important; 
+            transform: translateY(0) !important; 
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { display: none; }
+        
         .couple-layout { display: flex; justify-content: center; align-items: center; gap: 40px; width: 100%; max-width: 1100px; margin: 40px auto; }
         .person-box { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .photo-frame {
-            width: 260px; height: 340px; background: white; padding: 8px;
-            outline: 1px solid var(--rose-gold); border: 3px solid var(--rose-gold);
-            outline-offset: -5px; overflow: hidden; margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            width: 260px; height: 340px; background: white; padding: 10px;
+            outline: 1px solid var(--gold); border: 4px solid var(--gold);
+            outline-offset: -6px; overflow: hidden; margin-bottom: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             display: flex; justify-content: center; align-items: center;
         }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-        .ring-divider { font-size: 1.5rem; color: var(--rose-gold); margin: 0 10px; }
+        .ring-divider { font-size: 1.8rem; color: var(--gold); margin: 0 15px; }
 
-        /* --- CELEBRATIONS --- */
         .celebrations-grid { display: flex; justify-content: center; gap: 25px; width: 100%; max-width: 1200px; margin-top: 50px; flex-wrap: wrap; }
         .event-card {
-            background: #fff; border: 1px solid #f2eee6; padding: 45px 25px;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--gold); padding: 45px 25px;
             flex: 1; min-width: 300px; max-width: 340px; position: relative; text-align: center;
+            backdrop-filter: blur(8px);
         }
-        .event-card::before { content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid var(--rose-gold); opacity: 0.2; pointer-events: none; }
+        .event-card::before { content: ""; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 1px solid rgba(197, 160, 89, 0.2); pointer-events: none; }
 
-        /* --- VENUE & UI --- */
-        .venue-card-final {
-            background: #fff; border: 1px solid #f2eee6; padding: 60px 40px;
-            max-width: 650px; width: 95%; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.02);
-            display: flex; flex-direction: column; align-items: center;
+        .btn-gold {
+            background: var(--gold); color: white; padding: 18px 45px; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 12px; font-family: 'Montserrat';
+            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 30px;
+            font-weight: 500; transition: 0.3s;
         }
-        .get-directions-btn { background: var(--navy); color: white; padding: 18px 45px; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-top: 30px; }
-        .timer-unit { border: 1px solid var(--border-light); padding: 15px; min-width: 75px; background: white; margin: 8px; }
-        .timer-unit span { display: block; font-size: 1.8rem; color: var(--navy); }
-        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; opacity: 0.5; }
+        .timer-unit { border: 1px solid var(--gold); padding: 20px; min-width: 80px; background: rgba(0,0,0,0.4); margin: 10px; }
+        .timer-unit span { display: block; font-size: 2rem; color: var(--gold); }
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; opacity: 0.5; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);} 40% {transform: translateY(-10px) translateX(-50%);} 60% {transform: translateY(-5px) translateX(-50%);} }
-        .music-btn { position: fixed; bottom: 30px; right: 30px; background: var(--navy); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; display: none; cursor: pointer; z-index: 1000; opacity: 0.8; }
+        .music-btn { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; display: none; cursor: pointer; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        @media (max-width: 850px) {
-            .couple-layout { flex-direction: column; }
-            .photo-frame { width: 220px; height: 280px; }
-            .ring-divider { margin: 20px 0; }
-        }
+        @media (max-width: 850px) { .couple-layout { flex-direction: column; } .photo-frame { width: 220px; height: 280px; } .ring-divider { margin: 20px 0; } }
     </style>
 </head>
 <body>
 
     <div id="overlay">
         <div class="envelope">
-            <p class="sans" style="font-size: 0.5rem; color: #888;">Engagement Invitation</p>
-            <h2 style="font-size: 2rem; margin: 10px 0; color: var(--navy);">Sowmya & Harish</h2>
+            <p class="sans" style="font-size: 0.5rem; color: var(--navy);">Engagement Invitation</p>
+            <h2 class="serif-title" style="font-size: 1.8rem; margin: 10px 0; color: var(--navy);">Sowmya & Harish</h2>
             <div class="wax-seal" onclick="openInvitation()">
-                <span style="color: white; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: bold;">OPEN</span>
+                <span style="color:white; font-family:'Montserrat'; font-weight:600; font-size:0.8rem;">OPEN</span>
             </div>
         </div>
-        <p class="sans" style="color: var(--rose-gold); margin-top: 70px; font-size: 0.6rem;">Tap seal to unseal forever</p>
+        <p class="sans" style="margin-top: 80px; font-size: 0.6rem; color: var(--gold);">Tap to unseal royalty</p>
     </div>
 
     <audio id="bgMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
@@ -136,90 +145,67 @@
 
     <div class="main-content" id="content">
         
-        <section class="section">
-            <div class="gold-border-card" data-aos="fade-up">
-                <p class="sans">Together with their families</p>
-                <h1 class="prof-serif-title" style="margin: 20px 0;">Sowmya & Harish</h1>
-                <p class="italic-detail">Request the pleasure of your company at their <br>Engagement Ceremony</p>
-                <div style="border: 1px solid var(--border-light); padding: 15px 30px; margin: 25px 0; display: inline-block;">
-                    <h3 class="sans" style="font-size: 0.8rem; color: var(--navy); letter-spacing: 3px;">WEDNESDAY, MAY 13, 2026</h3>
-                    <p class="sans" style="font-size: 0.55rem; margin-top: 8px;">The Ring Ceremony : 11:00 AM</p>
-                </div>
-                <p class="italic-detail" style="font-size: 0.9rem;">Dear Guest, your presence would mean the world to us.</p>
+        <section class="royal-section" id="hero-reveal">
+            <p class="sans reveal-item" style="transition-delay: 0.4s;">Together with their families</p>
+            
+            <h1 class="serif-title reveal-item" style="margin: 25px 0; transition-delay: 1.2s;">Sowmya & Harish</h1>
+            
+            <p class="italic-detail reveal-item" style="transition-delay: 2.0s;">Request the honor of your presence at the</p>
+            
+            <h2 class="venue-stylish reveal-item" style="margin: 15px 0; transition-delay: 2.8s;">Engagement Ceremony</h2>
+            
+            <div class="reveal-item" style="border: 1px solid var(--gold); padding: 25px 50px; margin: 30px 0; background: rgba(197, 160, 89, 0.05); transition-delay: 3.6s;">
+                <h3 class="sans" style="font-size: 0.9rem; letter-spacing: 4px;">Wednesday, May 13, 2026</h3>
+                <p class="sans" style="font-size: 0.55rem; margin-top: 10px; color: #fff;">11:00 AM Onwards</p>
             </div>
-            <div class="scroll-indicator sans" id="scrollTag">Scroll Down <br> ↓</div>
+            
+            <p class="italic-detail reveal-item" style="font-size: 0.9rem; transition-delay: 4.4s;">Dear Guest, your presence would mean the world to us.</p>
+            
+            <div class="scroll-indicator sans">Scroll Down ↓</div>
         </section>
 
-        <section class="section" style="background: #faf9f6;">
-            <p class="sans" style="margin-bottom: 40px;">The Couple</p>
+        <section class="royal-section" style="background: var(--royal-blue);">
+            <p class="sans" style="margin-bottom: 40px;">The Royal Couple</p>
             <div class="couple-layout">
                 <div class="person-box" data-aos="fade-right">
                     <div class="photo-frame"><img src="your-photo.jpg" alt="Harish"></div>
-                    <h2 class="venue-name-prof" style="font-style: normal;">Harish</h2>
-                    <p class="location-small">Son of Mr. Epuri Venkata Mohan & Mrs. Aruna</p>
+                    <h2 class="serif-title" style="font-size: 2rem;">Harish</h2>
+                    <p class="sans" style="font-size: 0.5rem; margin-top: 10px; color: #ccc;">Son of Mr. Epuri Venkata Mohan & Mrs. Aruna</p>
                 </div>
                 <div class="ring-divider">💍</div>
                 <div class="person-box" data-aos="fade-left">
                     <div class="photo-frame"><img src="wife-photo.jpg" alt="Sowmya"></div>
-                    <h2 class="venue-name-prof" style="font-style: normal;">Sowmya</h2>
-                    <p class="location-small">Daughter of Mr. Vankadara Venugopal & Mrs. Sunitha</p>
+                    <h2 class="serif-title" style="font-size: 2rem;">Sowmya</h2>
+                    <p class="sans" style="font-size: 0.5rem; margin-top: 10px; color: #ccc;">Daughter of Mr. Vankadara Venugopal & Mrs. Sunitha</p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <p class="sans">The Celebrations</p>
-            <h2 class="serif-main" style="margin: 10px 0 30px;">Join Us in Our Joy</h2>
-            <div class="celebrations-grid">
-                <div class="event-card" data-aos="fade-up">
-                    <span style="font-size: 1.5rem; color: var(--rose-gold);">💍</span>
-                    <h3>The Engagement</h3>
-                    <p>May 13, 2026 | 11:00 AM</p>
-                    <p class="venue-name-prof" style="font-size: 1.8rem;">GSS Function Hall</p>
-                    <p class="location-small">Banaganapalli</p>
+        <section class="royal-section">
+            <h1 class="serif-title" style="margin-bottom: 40px; font-size: 2.5rem;">The Venue</h1>
+            <div class="event-card" data-aos="zoom-in" style="max-width: 600px; width: 90%;">
+                <div style="width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 30px; color: white;">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 </div>
-                <div class="event-card" data-aos="fade-up" data-aos-delay="200">
-                    <span style="font-size: 1.5rem; color: var(--rose-gold);">🎶</span>
-                    <h3>Orchestra</h3>
-                    <p>May 13, 2026 | 11:00 AM</p>
-                    <p class="venue-name-prof" style="font-size: 1.8rem;">GSS Function Hall</p>
-                    <p class="location-small">Banaganapalli</p>
-                </div>
-                <div class="event-card" data-aos="fade-up" data-aos-delay="400">
-                    <span style="font-size: 1.5rem; color: var(--rose-gold);">🍽️</span>
-                    <h3>Lunch</h3>
-                    <p>May 13, 2026 | 12:30 PM</p>
-                    <p class="venue-name-prof" style="font-size: 1.8rem;">GSS Function Hall</p>
-                    <p class="location-small">Banaganapalli</p>
-                </div>
+                <h2 class="venue-stylish" style="font-size: 2.8rem;">GSS Function Hall</h2>
+                <p class="sans" style="color: #ccc; font-size: 0.6rem; margin-top: 10px;">Banaganapalli, Andhra Pradesh, India</p>
+                <a href="https://share.google/hZ46sEgEhn60BlWM3" target="_blank" class="btn-gold">Get Directions</a>
             </div>
         </section>
 
-        <section class="section" style="background: #faf9f6;">
-            <h1 class="serif-main" style="margin-bottom: 40px;">The Venue</h1>
-            <div class="venue-card-final" data-aos="zoom-in">
-                <div style="width: 50px; height: 50px; background: var(--navy); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 30px; color: white;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                </div>
-                <h2 class="venue-name-prof" style="font-size: 3rem;">GSS Function Hall</h2>
-                <p class="location-small" style="font-size: 0.7rem;">Banaganapalli, Andhra Pradesh, India</p>
-                <a href="https://share.google/hZ46sEgEhn60BlWM3" target="_blank" class="get-directions-btn">Get Directions</a>
+        <section class="royal-section">
+            <p class="sans">Counting Down to the Union</p>
+            <div style="display: flex; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                <div class="timer-unit"><span id="d">00</span><p class="sans" style="font-size: 0.4rem;">Days</p></div>
+                <div class="timer-unit"><span id="h">00</span><p class="sans" style="font-size: 0.4rem;">Hours</p></div>
+                <div class="timer-unit"><span id="m">00</span><p class="sans" style="font-size: 0.4rem;">Minutes</p></div>
+                <div class="timer-unit"><span id="s">00</span><p class="sans" style="font-size: 0.4rem;">Seconds</p></div>
             </div>
         </section>
 
-        <section class="section">
-            <p class="sans">Counting Down</p>
-            <div style="display: flex; justify-content: center; margin-top: 20px;">
-                <div class="timer-unit"><span id="d">00</span><p class="sans" style="font-size: 0.45rem;">Days</p></div>
-                <div class="timer-unit"><span id="h">00</span><p class="sans" style="font-size: 0.45rem;">Hrs</p></div>
-                <div class="timer-unit"><span id="m">00</span><p class="sans" style="font-size: 0.45rem;">Min</p></div>
-                <div class="timer-unit"><span id="s">00</span><p class="sans" style="font-size: 0.45rem;">Sec</p></div>
-            </div>
-        </section>
-
-        <footer style="background: var(--navy); color: white; padding: 80px 20px; text-align: center;">
-            <div class="prof-serif-title" style="color: white; font-size: 2.5rem; margin-bottom: 10px;">Sowmya & Harish</div>
-            <p class="sans" style="opacity: 0.6; color: white; font-size: 0.55rem;">YOUR BLESSINGS ARE OUR GREATEST GIFT.</p>
+        <footer style="background: #000; color: white; padding: 100px 20px; text-align: center; border-top: 2px solid var(--gold);">
+            <div class="serif-title" style="font-size: 2.5rem; margin-bottom: 15px;">Sowmya & Harish</div>
+            <p class="sans" style="opacity: 0.6; color: var(--gold); font-size: 0.55rem;">Your Blessings are our Greatest Treasure.</p>
         </footer>
     </div>
 
@@ -229,14 +215,30 @@
         function openInvitation() {
             const seal = document.querySelector('.wax-seal');
             const overlay = document.getElementById('overlay');
+            const content = document.getElementById('content');
+            const hero = document.getElementById('hero-reveal');
+            const music = document.getElementById('bgMusic');
+            
+            // 1. Burst Seal
             seal.classList.add('seal-burst');
+
             setTimeout(() => {
+                // 2. Start Overlay Slide
                 overlay.classList.add('overlay-slide-out');
+
+                // 3. Make main content display block BEFORE overlay finishes sliding
+                content.style.display = 'block';
+
                 setTimeout(() => {
+                    // 4. Clean up overlay and show music button
                     overlay.style.display = 'none';
-                    document.getElementById('content').style.display = 'block';
                     document.getElementById('musicControl').style.display = 'block';
-                    document.getElementById('bgMusic').play().catch(e => {});
+                    
+                    // 5. THE FIX: Force layout recalculation then trigger reveal
+                    void hero.offsetWidth; 
+                    hero.classList.add('show-now');
+                    
+                    music.play().catch(e => console.log("Music play blocked"));
                     AOS.refresh();
                 }, 1000);
             }, 400);
